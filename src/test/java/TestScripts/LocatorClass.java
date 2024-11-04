@@ -23,7 +23,7 @@ public class LocatorClass {
 	  WebElement pWord = driver.findElement(By.id("password"));
 	  pWord.sendKeys("SuperSecretPassword!");
 	  WebElement login = driver.findElement(By.xpath("//*[text()=' Login']"));
-	  login.click();
+	  login.submit();
 	  System.out.println("Navigated to the page sucessfully"+ driver.getTitle());
 	  driver.quit();
 	  

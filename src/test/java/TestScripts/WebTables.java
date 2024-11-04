@@ -20,7 +20,7 @@ public class WebTables {
 		
 		for (WebElement items: element) {
 		System.out.println("The Total no of elements " + element.size());
-		System.out.println("The title is after navigate().forward() " + items.getText());
+		System.out.println("Element is " + items.getText());
 		
 		
 		}

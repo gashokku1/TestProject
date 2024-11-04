@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestScripts.WebTables">
+      <class name="TestScripts.DoubleClick">
         <methods>
-          <include name="List"/>
+          <include name="search"/>
         </methods>
-      </class> <!-- TestScripts.WebTables -->
+      </class> <!-- TestScripts.DoubleClick -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
