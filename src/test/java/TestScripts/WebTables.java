@@ -10,18 +10,26 @@ import org.testng.annotations.Test;
 public class WebTables {
 	WebDriver driver;
   @Test
-  public void List() {
+  public void AutoCompleteTest() throws InterruptedException {
 	  driver = new ChromeDriver();
 
-		driver.get("https://testautomationpractice.blogspot.com/");
+		driver.get("https://jqueryui.com/autocomplete/");
 		driver.manage().window().maximize();
-		//WebElement element = driver.findElement(By.xpath("//*[@title='Search']"));
-		java.util.List<WebElement> element = driver.findElements(By.xpath("//td[text()='Learn Java']/following-sibling::td"));
+		Thread.sleep(4000);
+		WebElement element = driver.findElement(By.cssSelector("iframe.demo-frame"));
+		driver.switchTo().frame(element);
+		WebElement input = driver.findElement(By.cssSelector("input#tags"));
+		input.sendKeys("a");
+		Thread.sleep(2000);
+		java.util.List<WebElement> Elementslist = driver.findElements(By.xpath("//ul[@id='ui-id-1']/li"));
+		int list = Elementslist.size();
 		
-		for (WebElement items: element) {
-		System.out.println("The Total no of elements " + element.size());
-		System.out.println("Element is " + items.getText());
-		
+		for (WebElement singleElement: Elementslist) {
+			String item = singleElement.getText();
+			if(item.equalsIgnoreCase("Asp")) {
+				System.out.println("Item selected"+ item);
+				singleElement.click();
+			}
 		
 		}
   }
