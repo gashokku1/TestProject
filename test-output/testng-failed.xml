@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestScripts.WebTables">
+      <class name="TestScripts.ChromeDevTools">
         <methods>
-          <include name="AutoCompleteTest"/>
+          <include name="deviceModeTest"/>
+          <include name="pageSetup"/>
         </methods>
-      </class> <!-- TestScripts.WebTables -->
+      </class> <!-- TestScripts.ChromeDevTools -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

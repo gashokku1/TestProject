@@ -1,7 +1,10 @@
 package TestScripts;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectInputFilter.Status;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,17 +12,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.opentelemetry.api.logs.Logger;
 
-public class LocatorClass {
+public class LogiinTest {
 	WebDriver driver;
+	Properties prop;
+	
 	
 	@BeforeTest
+	public void readProperty() throws IOException   {
+		String path = System.getProperty("user.dir")+"\\src\\test\\resources\\configFiles\\config.properties";
+		FileInputStream fin = new FileInputStream(path);
+		prop = new Properties();
+		prop.load(fin);
+	}
+	
+	@BeforeMethod
 	public void Before() throws InterruptedException {
-		String strBrowser = "";
+		String strBrowser = prop.getProperty("browser");
 		if (strBrowser.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
 		} else if (strBrowser.equalsIgnoreCase("edge")) {
@@ -29,7 +43,7 @@ public class LocatorClass {
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get("https://the-internet.herokuapp.com/login");
+		driver.get(prop.getProperty("url"));
 		Thread.sleep(2000);
 	}
 	@AfterTest
